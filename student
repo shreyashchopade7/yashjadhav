@@ -1,0 +1,107 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+typedef struct student
+{
+    int roll;
+    char name[20];
+    float marks;
+}student;
+
+void sort(student st[],int n)
+{
+    student temp;
+    int i,j;
+    for(i=0;i<n-1;i++)  //to calculate number of passes [no. of passes=n-1]
+    {
+        for(j=0;j<n-i-1;j++) //to calculate swap [no of iterations]
+
+        {
+            if( st[j].roll>st[j+1].roll)
+          {
+               temp=st[j];  //swap
+               st[j]=st[j+1];
+               st[j+1]=temp;
+          }
+       }
+    }
+ for(i=0;i<n;i++) //to display roll no ,name and mrks all at a time
+   {
+       printf(" roll number %d\t",st[i].roll);
+        printf(" name %s\t",st[i].name);
+        printf(" marks %f\n",st[i].marks);
+    }
+}
+
+void create(student st[20],int n)
+{
+    int i;
+    for(i=0;i<n;i++)
+    {
+        printf("enter roll number");
+        scanf(" %d",&st[i].roll);
+        printf("enter name");
+        scanf(" %s",&st[i].name);
+        printf("enter marks");
+        scanf(" %f",&st[i].marks);
+    }
+}
+
+void display(student st[],int n)
+{
+    int i;
+    for(i=0;i<n;i++)
+    {
+       printf(" roll number %d\t",st[i].roll);
+        printf(" name %s\t",st[i].name);
+        printf(" marks %f\n",st[i].marks);
+    }
+}
+
+void search(student st[],int n,int r)
+{
+    int i;
+    for(i=0;i<n;i++)
+   {
+     if(r==st[i].roll)
+     {
+      printf(" roll no.%d\n",st[i].roll);
+      printf(" name %s\n",st[i].name);
+      printf(" marks %f\n",st[i].marks);
+     }
+   }
+
+}
+
+int main()
+{
+    student st[20];
+    int ch,n,r;
+    do
+    {
+        printf("choose one option\n 1)create\n 2)display \n 3)search \n 4)sort\n");
+        scanf("%d",&ch);
+        switch(ch)
+        {
+                case 1:printf("create");
+                printf("enter the number of students");
+                scanf("%d",&n);
+                create(st,n);
+                break;
+                case 2:printf("display");
+                display(st,n);
+                break;
+                case 3:printf("search");
+                printf("enter roll no.");
+                scanf("%d",&r);
+                search(st,n,r);
+                break;
+                case 4:printf("sort");
+                sort(st,n);
+                break;
+
+        }
+    }
+    while(ch!=4);
+    return 0;
+}
