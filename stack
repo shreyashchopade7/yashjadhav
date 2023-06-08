@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include<string.h>
+
+#include <stdlib.h>
+int max=5;
+char stack[5];
+int top = -1;
+void push(char);
+char pop();
+int main()
+{
+    char str[max];
+    int i;
+     printf("Enter the string");
+     scanf("%s",&str);
+     for(i=0;i<strlen(str);i++){
+        push(str[i]);
+     }
+     for(i=0;i<strlen(str);i++){
+        str[i]=pop();
+    }
+    printf("reversed string is %s",str);
+
+    return 0;
+}
+   void push(char ch){
+       if(top==max-1){
+        printf("stack is full");
+
+       }
+       else{
+        stack[++ top]= ch;
+       }
+   }
+   char pop(){
+       if(top==-1)
+        printf("stack is empty");
+       else{
+        return stack[top--];
+       }
+
+   }
